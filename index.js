@@ -3,7 +3,7 @@ var RtmClient = require('@slack/client').RtmClient,
   app = express(),
   bodyParser = require('body-parser');
   
-app.use( bodyParser.JSON() );
+app.use( bodyParser.json() );
 
 var token = process.env.SLACK_API_TOKEN || '';
 
