@@ -18,7 +18,7 @@ var initialize = require('./modules/initialize'),
 app.use( bodyParser.json() );  
 
 // Initialize user list from folks who have agreed to participate
-var usersJSON = require("./users.json");  
+var usersJSON = require("./data/users.json");  
 users = usersJSON.map(function(d){ return { username: d }})
 
 // Prove to Slack that we're a real app
