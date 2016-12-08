@@ -1,6 +1,6 @@
 module.exports = function(){
 
-  var job = new CronJob('00 21 13 * * 1-5', function() {    
+  var job = new CronJob('00 23 13 * * 1-5', function() {    
     console.log("maybe going to post something?")
     // Check to see if we have three responses.
     collection = connectDatabase.then(function(db){
@@ -35,5 +35,5 @@ module.exports = function(){
       bot.postMessageToChannel("serendipity", message, { 'slackbot': false, icon_emoji: ':heart_eyes:' })    
     })
     .catch(mistake);
-  });
+  }, null, true, 'America/New_York');
 }
