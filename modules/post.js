@@ -1,6 +1,6 @@
 module.exports = function(){
 
-  var job = new CronJob('* * 11 * * 1-5', function() {    
+  var job = new CronJob('00 0 13 * * 1-5', function() {    
     // Check to see if we have three responses.
     collection = connectDatabase.then(function(db){
       return db.collection('users');

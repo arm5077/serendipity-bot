@@ -1,6 +1,6 @@
 module.exports = function(){
   var collection = null;
-  var job = new CronJob('0 */10 8-15 * * 1-5', function() {     
+  var job = new CronJob('0 */10 11-15 * * 1-5', function() {     
     collection = connectDatabase.then(function(db){
       return db.collection('users');
     })
