@@ -1,6 +1,6 @@
 module.exports = function(){
 
-  var job = new CronJob('00 23 13 * * 1-5', function() {    
+  var job = new CronJob('00 15 11 * * 1-5', function() {    
     console.log("maybe going to post something?")
     // Check to see if we have three responses.
     collection = connectDatabase.then(function(db){
@@ -20,7 +20,7 @@ module.exports = function(){
       })
     }).then(function(results){
       // Cycle through results and build message
-      message = "Hello! Time for a look at some of the cool stuff Atlantickans are doing: \n\n";
+      message = "Hello! Time for a look at some of the cool stuff Atlantickers are doing: \n\n";
       results.forEach(function(user){
         archiveUser = userlist._value.members.filter( function(archiveUser){ return archiveUser.name == user.username })[0]
         if(user.responses.length > 0){
