@@ -17,6 +17,7 @@
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.4",
     "request": "^2.75.0",
+    "slack-node": "^0.1.8",
     "slackbots": "^0.5.3"
   }
 }

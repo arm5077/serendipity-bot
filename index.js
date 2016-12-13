@@ -1,4 +1,5 @@
 slackbot = require('slackbots'),
+  Slack = require('slack-node');
   express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
@@ -16,6 +17,9 @@ var initialize = require('./modules/initialize'),
 
 // Install middleware to more easily read POST requests  
 app.use( bodyParser.json() );  
+
+// Set up Slack API library
+slack = new Slack(process.env.SLACK_API_TOKEN);
 
 // Initialize user list from folks who have agreed to participate
 var usersJSON = require("./data/users");  
