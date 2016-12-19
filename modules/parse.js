@@ -20,8 +20,8 @@ module.exports = function(message){
     else if( message.text.toLowerCase().indexOf("snooze") == 0 ){
       console.log("Temporarily snoozing " + user.name)
       collection.update({ username: user.name }, { 
-        $set: { snoozed: moment.utc().add(2, "week").toDate() },
-        $push: { snoozes: moment.utc().add(2, "week").toDate() }});
+        $set: { snoozed: moment.utc().add(1, "week").toDate() },
+        $push: { snoozes: moment.utc().add(1, "week").toDate() }});
       bot.postMessageToUser(user.name, "OK, I won't bug you for at least a week.", { 'slackbot': false, icon_emoji: ':sleeping:' })
     }
     // Did they make a mistake and are correcting it?
@@ -51,7 +51,7 @@ module.exports = function(message){
         message.text = message.text.substring("i’m ".length)
   
       collection.update({ username: user.name }, { 
-        $set: { status: "response received, ready for posting", lastContacted: moment.utc().toDate(), snooze: moment.utc().toDate() },
+        $set: { status: "response received, ready for posting", lastContacted: moment.utc().toDate(), snoozed: moment.utc().toDate() },
         $push: { responses: { date: moment.utc().toDate(), text: message.text }}
       });
       bot.postMessageToUser(user.name, "Cool! I'll share later that you're \"" + message.text + "\" ... if this isn't right, reply with \"oops!\"", { 'slackbot': false, icon_emoji: ':heart_eyes:' })    
