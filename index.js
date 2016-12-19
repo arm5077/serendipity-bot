@@ -49,7 +49,9 @@ bot.on('start', function(){
 
   // Let's connect to the MongoDB database
   connectDatabase = MongoClient.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/serendipity')    
-  initialize();  
+  
+  initialize();
+  new CronJob('00 00 */1 * * *', initialize);
   pingPeople();  
   postResponses();
   
