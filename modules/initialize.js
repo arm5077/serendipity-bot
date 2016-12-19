@@ -1,12 +1,11 @@
 module.exports = function(){
-
 // Add/subtract users based on folks in #serendipity channel
+  console.log("Checking for new users!");
 
-var job = new CronJob('00 00 */1 * * *', function() {    
   // Grab list of all members
   slack.api("users.list", { "presence": 0 }, function(err, data){
     var members = data.members;
-
+    console.log(members);
     slack.api("channels.list", { "exclude_archived": 1 }, function(err, channels){
       if(err) throw err;
       var serendipityMembers= channels.channels.filter(function(d){ return d.name == "serendipity"})[0].members;
@@ -16,6 +15,7 @@ var job = new CronJob('00 00 */1 * * *', function() {
         return db.collection('users');
       })
       .then(function(collection){  	
+        console.log(collection)
         // Initialize with default data if there's none already
         var initBulk = collection.initializeUnorderedBulkOp();
         serendipityMembers.forEach(function(member){
@@ -32,13 +32,11 @@ var job = new CronJob('00 00 */1 * * *', function() {
           }})
         });
         initBulk.execute();
-      
+    
         collection.remove( { id: { $nin: serendipityMembers } })
-      
+    
       })
       .catch(mistake);
     });
   });
-
-});
 }
