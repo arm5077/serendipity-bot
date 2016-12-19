@@ -22,7 +22,7 @@ module.exports = function(message){
       collection.update({ username: user.name }, { 
         $set: { snoozed: moment.utc().add(2, "week").toDate() },
         $push: { snoozes: moment.utc().add(2, "week").toDate() }});
-      bot.postMessageToUser(user.name, "OK, I won't bug you for at least two weeks.", { 'slackbot': false, icon_emoji: ':sleeping:' })
+      bot.postMessageToUser(user.name, "OK, I won't bug you for at least a week.", { 'slackbot': false, icon_emoji: ':sleeping:' })
     }
     // Did they make a mistake and are correcting it?
     else if( message.text.toLowerCase().indexOf("oops") == 0){
