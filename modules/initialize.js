@@ -5,7 +5,6 @@ module.exports = function(){
   // Grab list of all members
   slack.api("users.list", { "presence": 0 }, function(err, data){
     var members = data.members;
-    console.log(members);
     slack.api("channels.list", { "exclude_archived": 1 }, function(err, channels){
       if(err) throw err;
       var serendipityMembers= channels.channels.filter(function(d){ return d.name == "serendipity"})[0].members;
