@@ -59,7 +59,7 @@ module.exports = function(){
             var person = potentials[index];
             
             // See if this person is active
-            slack.api("users.list", { "presence": "active" }, function(err, data){
+            return slack.api("users.list", { "presence": "active" }, function(err, data){
               if(err) throw err;
               var activeUsers = data.members.map(function(d){ return d.name });
               if( activeUsers.indexOf(person.username) == -1){

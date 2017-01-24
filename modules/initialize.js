@@ -15,7 +15,6 @@ module.exports = function(){
         return db.collection('users');
       })
       .then(function(collection){  	
-        console.log(collection)
         // Initialize with default data if there's none already
         var initBulk = collection.initializeUnorderedBulkOp();
         serendipityMembers.forEach(function(member){
