@@ -51,7 +51,7 @@ module.exports = function(){
           return candidates.then(function(candidates){
             console.log(candidates)
             console.log(`Total candidates: ${candidates.length}`);
-            var potentials = candidates.filter(function(d){ return d.status == "" })
+            var potentials = candidates.filter(function(d){ return d.status == "" || d.status == null })
             // If there's no one left, we're SOL
             if( potentials.length == 0) {
               console.log("there's no one left!")
