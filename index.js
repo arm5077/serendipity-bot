@@ -23,8 +23,11 @@ slack = new Slack(process.env.SLACK_API_TOKEN);
 
 // Initialize user list from folks who have agreed to participate
 var usersJSON = require("./data/users");  
-users = usersJSON.map(function(d){ return { username: d }})
-
+if(usersJSON)
+  users = usersJSON.map(function(d){ return { username: d }})
+else
+  users = [];
+    
 // Prove to Slack that we're a real app
 app.post('/getMessage', function(req, res){
   res.send(req.body.challenge)
