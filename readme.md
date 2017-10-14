@@ -14,3 +14,4 @@ A Slack bot that encourages chance encounters by asking people what they're pass
 4. **In your Heroku app's settings, add a `SLACK_API_TOKEN` environmental variable.** You can get this from your Slack app's dashboard.
 5. Restart your Heroku instance on the CLI with `heroku restart`.
 
+Your bot should show up as active in Slack!
